@@ -28,5 +28,5 @@ async def http422_error_handler(_: Request, exc: RequestValidationError):
     error_response = ErrorResponse(status=422, message=errors)
     return JSONResponse(
         status_code=422,
-        message=error_response.model_dump()
+        content=error_response.model_dump()
     )
