@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from loguru import logger
 from typing import Callable
-from sqlalchemy.orm import Session
 
 from app.db_models.base import Base
 from app.db_models.session import engine

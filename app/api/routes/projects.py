@@ -1,5 +1,4 @@
-# Project Endpoints
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 from sqlalchemy.orm import Session
 from fastapi import Depends
 
