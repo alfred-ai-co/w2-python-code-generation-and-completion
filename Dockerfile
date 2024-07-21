@@ -1,11 +1,20 @@
-FROM python:3.10.12
+# Use an official Python runtime as a parent image
+FROM python:3.8-slim
 
-WORKDIR /code
+# Set the working directory in the container
+WORKDIR /app
 
-COPY requirements.txt /code/
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-RUN pip install -r requirements.txt
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /code/
+# Make port 8000 available to the world outside this container
+EXPOSE 8000
 
-CMD [ "fastapi", "run", "app/main.py" ]
+# Define environment variable
+ENV APP_ENV=dev
+
+# Run app.py when the container launches
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
